@@ -1,0 +1,5 @@
+.coverage/
+.dart_tool/
+.idea/
+.vscode/
+*.DS_Store

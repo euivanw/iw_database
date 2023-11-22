@@ -1,0 +1,20 @@
+name: "Release"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  analyzer:
+    name: "Analyzer"
+    uses: ./.github/workflows/analyzer.yaml
+
+  tests:
+    name: "Tests"
+    uses: ./.github/workflows/tests.yaml
+
+  version:
+    name: "Version"
+    needs: [analyzer, tests]
+    uses: ./.github/workflows/version.yaml

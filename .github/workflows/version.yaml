@@ -1,0 +1,33 @@
+name: "Version Tag"
+
+on:
+  workflow_call:
+    outputs:
+      version:
+        description: "Generated Version"
+        value: ${{ jobs.version.outputs.version }}
+
+jobs:
+  version:
+    name: "Version"
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.semantic_version.outputs.version }}
+
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+
+      - name: "Generate Project Version"
+        if: success()
+        id: semantic_version
+        uses: paulhatch/semantic-version@v5.3.0
+        with:
+          tag_prefix: "v"
+          major_pattern: "#MAJOR#"
+          minor_pattern: "#MINOR#"
+          version_format: "${major}.${minor}.${patch}"
+          enable_prerelease_mode: false

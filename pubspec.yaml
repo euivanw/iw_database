@@ -1,0 +1,21 @@
+name: iw_database
+description: This project is an implementation that allow developers to encapsulate their own usage of database clients.
+version: 1.0.0
+repository: https://github.com/euivanw/iw_database
+
+topics:
+  - database
+  - postgresql
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+scripts: derry.yaml
+
+dependencies:
+  collection: ^1.18.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  mocktail: ^1.0.1
+  test: ^1.24.9

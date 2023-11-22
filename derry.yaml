@@ -1,0 +1,39 @@
+# Derry script manager for Dart
+# Repository: https://github.com/frencojobs/derry
+
+update:
+  - echo "Start [update] task..."
+  - dart pub get || false
+  - echo "End [update] task..."
+
+analyze:
+  - echo "Start [analyze] task..."
+  - dart analyze  --fatal-infos --fatal-warnings || false
+  - echo "End [analyze] task..."
+
+tests:
+  - echo "Start [tests] task..."
+  - rm -rf .coverage/ || false
+  - dart pub global activate full_coverage || false
+  - dart pub global activate coverage || false
+  - dart pub global activate check_coverage || false
+  - full_coverage || false
+  - dart test --coverage=.coverage || false
+  - format_coverage -l -c -i .coverage --report-on=lib | check_coverage 100 || false
+  - dart pub global deactivate full_coverage || false
+  - dart pub global deactivate coverage || false
+  - dart pub global deactivate check_coverage || false
+  - rm test/full_coverage_test.dart || false
+  - rm -rf .coverage/ || false
+  - echo "End [tests] task..."
+
+coverage:
+  - echo "Start [coverage] task..."
+  - rm -rf .coverage/ || false
+  - dart pub global activate full_coverage || false
+  - dart pub global activate coverage || false
+  - dart pub global activate check_coverage || false
+  - full_coverage || false
+  - dart pub global run coverage:test_with_coverage -o .coverage/
+  - rm test/full_coverage_test.dart || false
+  - echo "End [coverage] task..."
