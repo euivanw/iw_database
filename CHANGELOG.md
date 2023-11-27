@@ -1,3 +1,3 @@
 ## 1.0.0
 
-- Added support for PostgreSQL database client.
+- Added support for MySQL database client.
