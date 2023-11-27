@@ -6,17 +6,24 @@ import '../models/database_properties_model.dart';
 import '../models/database_result_model.dart';
 import 'database_client_service.dart';
 
+/// This class implements the `mysql_client` and encapsulates to a
+/// `DatabaseClientService`.
+///
+/// You can instantiate this classe to execute database queries using
+/// `mysql_client`.
 final class MySQLDatabaseClientService implements DatabaseClientService {
+  /// Stores the opened database connection.
   late final MySQLConnection? _connection;
 
+  /// Stores the database properties.
   final DatabaseProperties _properties;
 
+  /// Constructor
   MySQLDatabaseClientService({
     required DatabaseProperties properties,
   }) : _properties = properties;
 
-  MySQLConnection? get connection => _connection;
-
+  /// Responsible to open a MySQL connection.
   @override
   Future<void> openConnection() async {
     try {
@@ -35,12 +42,13 @@ final class MySQLDatabaseClientService implements DatabaseClientService {
       );
     } catch (error, stackTrace) {
       throw DatabaseException(
-        errorMessage: 'Unhandled error: $error',
+        errorMessage: 'Unhandled MySQL error: $error',
         stackTrace: stackTrace,
       );
     }
   }
 
+  /// Responsible to disconnected from the MySQL already connected.
   @override
   Future<void> closeConnection() async {
     try {
@@ -52,12 +60,13 @@ final class MySQLDatabaseClientService implements DatabaseClientService {
       );
     } catch (error, stackTrace) {
       throw DatabaseException(
-        errorMessage: 'Unhandled error: $error',
+        errorMessage: 'Unhandled MySQL error: $error',
         stackTrace: stackTrace,
       );
     }
   }
 
+  /// Responsible to execute a SQL query into MySQL database.
   @override
   Future<DatabaseResult> executeQuery({
     required String sql,
@@ -80,7 +89,7 @@ final class MySQLDatabaseClientService implements DatabaseClientService {
       }
 
       throw DatabaseException(
-        errorMessage: 'Database connection is not opened.',
+        errorMessage: 'MySQL connection is not opened.',
         sqlCommand: sql,
         sqlParameters: parameters,
       );
