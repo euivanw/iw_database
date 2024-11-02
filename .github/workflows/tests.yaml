@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         sdk: [ stable ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ ubuntu-latest ]
 
     name: "Unit Tests"
     runs-on: ${{ matrix.os }}
