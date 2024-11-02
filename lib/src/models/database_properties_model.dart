@@ -16,6 +16,9 @@ final class DatabaseProperties {
   /// Contains the database password
   final String password;
 
+  /// Indicates if the connection is secure
+  final bool secure;
+
   /// Constructor
   const DatabaseProperties({
     required this.host,
@@ -23,6 +26,7 @@ final class DatabaseProperties {
     required this.name,
     required this.username,
     required this.password,
+    this.secure = true,
   });
 
   /// DatabaseProperties equals method.
@@ -36,7 +40,8 @@ final class DatabaseProperties {
         other.port == port &&
         other.name == name &&
         other.username == username &&
-        other.password == password;
+        other.password == password &&
+        other.secure == secure;
   }
 
   /// DatabaseProperties hash code getter.
@@ -46,12 +51,13 @@ final class DatabaseProperties {
         port.hashCode ^
         name.hashCode ^
         username.hashCode ^
-        password.hashCode;
+        password.hashCode ^
+        secure.hashCode;
   }
 
   /// DatabaseProperties toString method.
   @override
   String toString() {
-    return 'DatabaseProperties(host: $host, port: $port, name: $name, username: $username, password: $password)';
+    return 'DatabaseProperties(host: $host, port: $port, name: $name, username: $username, password: $password, secure: $secure)';
   }
 }

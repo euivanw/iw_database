@@ -10,6 +10,7 @@ Future<void> main() async {
       name: 'tests',
       username: 'root',
       password: 'wrah-baft-krup-cex-TEEH',
+      secure: false,
     );
 
     final DatabaseClientService service = MySQLDatabaseClientService(

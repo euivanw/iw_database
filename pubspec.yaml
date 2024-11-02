@@ -1,6 +1,6 @@
 name: iw_database
 description: This project is an implementation that allow developers to encapsulate their own usage of database clients.
-version: 1.0.1
+version: 1.1.0
 repository: https://github.com/euivanw/iw_database
 
 topics:
