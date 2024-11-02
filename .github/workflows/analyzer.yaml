@@ -7,7 +7,7 @@ jobs:
   analyzer:
     strategy:
       matrix:
-        sdk: [ stable, 3.4.4, 3.3.4, 3.2.6, 3.1.5, 3.0.7 ]
+        sdk: [ stable ]
         os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     name: "Code Analyzer"
