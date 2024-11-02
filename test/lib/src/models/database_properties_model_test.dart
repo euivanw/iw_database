@@ -9,6 +9,8 @@ void main() {
     final String mockDatabaseName = 'database';
     final String mockDatabaseUsername = 'root';
     final String mockDatabasePassword = 'root';
+    final bool mockDatabaseSecureTrue = true;
+    final bool mockDatabaseSecureFalse = false;
 
     group('Creation', () {
       test(
@@ -21,6 +23,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureTrue,
           );
 
           // Asserts
@@ -29,6 +32,7 @@ void main() {
           expect(property.name, equals(mockDatabaseName));
           expect(property.username, equals(mockDatabaseUsername));
           expect(property.password, equals(mockDatabasePassword));
+          expect(property.secure, equals(mockDatabaseSecureTrue));
         },
       );
     });
@@ -44,6 +48,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureFalse,
           );
 
           final DatabaseProperties property2 = DatabaseProperties(
@@ -52,6 +57,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureFalse,
           );
 
           // Act/Asserts
@@ -69,6 +75,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureFalse,
           );
 
           final DatabaseProperties property2 = DatabaseProperties(
@@ -77,6 +84,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: 'password',
+            secure: false,
           );
 
           // Act/Asserts
@@ -96,6 +104,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureTrue,
           );
 
           final DatabaseProperties property2 = DatabaseProperties(
@@ -104,6 +113,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureTrue,
           );
 
           // Act
@@ -125,6 +135,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureTrue,
           );
 
           final DatabaseProperties property2 = DatabaseProperties(
@@ -133,6 +144,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: 'password',
+            secure: false,
           );
 
           // Act
@@ -156,6 +168,7 @@ void main() {
             name: mockDatabaseName,
             username: mockDatabaseUsername,
             password: mockDatabasePassword,
+            secure: mockDatabaseSecureTrue,
           );
 
           // Act
@@ -165,7 +178,7 @@ void main() {
           expect(
             toStringProperty,
             equals(
-              'DatabaseProperties(host: $mockDatabaseHost, port: $mockDatabasePort, name: $mockDatabaseName, username: $mockDatabaseUsername, password: $mockDatabasePassword)',
+              'DatabaseProperties(host: $mockDatabaseHost, port: $mockDatabasePort, name: $mockDatabaseName, username: $mockDatabaseUsername, password: $mockDatabasePassword, secure: $mockDatabaseSecureTrue)',
             ),
           );
         },
