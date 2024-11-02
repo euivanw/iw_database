@@ -33,6 +33,7 @@ final class MySQLDatabaseClientService implements DatabaseClientService {
         databaseName: _properties.name,
         userName: _properties.username,
         password: _properties.password,
+        secure: _properties.secure,
       );
       await _connection?.connect();
     } on MySQLException catch (error, stackTrace) {
